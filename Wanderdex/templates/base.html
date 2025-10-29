@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{% block title %}Meu Aplicativo{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<main class="page">
+{% block content %}{% endblock %}
+</main>
+<nav class="bottom-nav">
+<a href="{{ url_for('home') }}" class="nav-item {% if active=='home' or not active %}active{% endif %}">Início</a>
+<a href="{{ url_for('galeria') }}" class="nav-item {% if active=='galeria' %}active{% endif %}">Galeria</a>
+<a href="{{ url_for('configuracoes') }}" class="nav-item {% if active=='configuracoes' %}active{% endif %}">Configurações</a>
+</nav>
+</body>
+</html>
