@@ -1,26 +1,78 @@
-<!-- home.html -->
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Início</title>
-</head>
-<body>
-    <h1>Bem-vindo!</h1>
-    <p>Vamos coletar todas as memórias de Foz do Iguaçu! Escaneie os códigos das atrações turísticas para desbloquear cartões postais!</p>
-    <button onclick="iniciarCamera()">Escanear QR Code</button>
-    <div id="camera"></div>
-    <h2>Atrações Turísticas</h2>
-    <div class="card">Evento com QR Code</div>
-    <nav>
-        <a href="/home">Início</a>
-        <a href="/galeria">Galeria</a>
-        <a href="/configuracoes">Configurações</a>
-    </nav>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Início{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>Bem-vindo, {{ user }}!</h1>
+  <p>Vamos coletar todas as memórias de Foz do Iguaçu! Escaneie os códigos das atrações turísticas para desbloquear cartões postais!</p>
+  <button onclick="iniciarCamera()">Escanear QR Code</button>
+</div>
 
+<h2>Atrações Turísticas</h2>
 
+<div class="attractions-container">
 
+  <div class="attraction-card">
+    <img src="{{ url_for('static', filename='img/parque-aves.jpg') }}" alt="Parque das Aves">
+    <div class="attraction-content">
+      <h3>Parque das Aves</h3>
+      <p>Um santuário dedicado à conservação das aves da Mata Atlântica, oferecendo contato direto com diversas espécies em ambientes naturais.</p>
+      <div class="postais">
+        <span class="postal">Cartão Postal 1</span>
+        <span class="postal">Cartão Postal 2</span>
+      </div>
+    </div>
+  </div>
 
+  <div class="attraction-card">
+    <img src="{{ url_for('static', filename='img/cataratas.jpg') }}" alt="Cataratas do Iguaçu">
+    <div class="attraction-content">
+      <h3>Cataratas do Iguaçu</h3>
+      <p>Uma das sete maravilhas naturais do mundo, as Cataratas impressionam com suas quedas d’água e a beleza do Parque Nacional do Iguaçu.</p>
+      <div class="postais">
+        <span class="postal">Cartão Postal 1</span>
+        <span class="postal">Cartão Postal 2</span>
+        <span class="postal">Cartão Postal 3</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="attraction-card">
+    <img src="{{ url_for('static', filename='img/marco-tres-fronteiras.jpg') }}" alt="Marco das Três Fronteiras">
+    <div class="attraction-content">
+      <h3>Marco das Três Fronteiras</h3>
+      <p>Ponto histórico que une Brasil, Argentina e Paraguai. Um espaço cultural e turístico repleto de cores, luzes e apresentações típicas.</p>
+      <div class="postais">
+        <span class="postal">Cartão Postal 1</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+<script>
+function iniciarCamera() {
+  const container = document.createElement('div');
+  container.id = "reader";
+  document.body.appendChild(container);
+
+  const html5QrCode = new Html5Qrcode("reader");
+
+  html5QrCode.start(
+    { facingMode: "environment" },
+    { fps: 10, qrbox: 250 },
+    qrCodeMessage => {
+      alert("QR Code detectado: " + qrCodeMessage);
+      html5QrCode.stop();
+      document.getElementById("reader").remove();
+    },
+    errorMessage => {
+      console.log("Leitura falhou:", errorMessage);
+    }
+  ).catch(err => {
+    alert("Erro ao iniciar câmera: " + err);
+  });
+}
+</script>
+
+{% endblock %}

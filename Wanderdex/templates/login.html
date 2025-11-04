@@ -1,22 +1,21 @@
 {% extends 'base.html' %}
-{% block title %}Login - Flask App{% endblock %}
-
-
+{% block title %}Login{% endblock %}
 {% block content %}
+
 <div class="card center">
-<h2>Login</h2>
-{% if error %}
-<div class="error">{{ error }}</div>
-{% endif %}
-<form method="post" action="{{ url_for('login') }}">
-<label>Username
-<input name="username" required />
-</label>
-<label>Password
-<input name="password" type="password" required />
-</label>
-<button type="submit">Login</button>
-</form>
-<p class="muted">Demo account: <strong>user</strong> / <strong>pass</strong></p>
+  <h2>Login</h2>
+
+  <form method="POST" action="{{ url_for('login') }}">
+    <label for="username">Usuário</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Senha</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit">Entrar</button>
+  </form>
+
+  <p>Não tem conta? <a href="{{ url_for('register') }}">Cadastre-se aqui</a></p>
 </div>
+
 {% endblock %}

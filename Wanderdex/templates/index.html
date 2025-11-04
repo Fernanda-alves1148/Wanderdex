@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Wanderdex{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>Wanderdex</h1>
+  <p>Descubra Foz do Iguaçu de uma maneira única! Nosso projeto transforma sua viagem em uma coleção de lembranças digitais.</p>
+  <p>Visite os pontos turísticos, escaneie os QR Codes e desbloqueie cartões postais exclusivos. Monte seu álbum digital e compartilhe suas memórias!</p>
+  <div class="actions">
+    <a href="{{ url_for('login') }}" class="btn">Entrar</a>
+    <a href="{{ url_for('register') }}" class="btn-secondary">Cadastrar-se</a>
+  </div>
+</div>
+{% endblock %}

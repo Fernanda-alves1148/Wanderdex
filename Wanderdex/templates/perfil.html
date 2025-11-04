@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Perfil do Usuário{% endblock %}
+{% block content %}
+
+<div class="profile-container">
+  <div class="profile-card">
+    <img src="{{ url_for('static', filename='img/default_profile.png') }}" alt="Foto de Perfil" class="profile-pic">
+
+    <h2>{{ user }}</h2>
+    <p><strong>Email:</strong> {{ email }}</p>
+    <p><strong>Cartões desbloqueados:</strong> {{ cartoes }}</p>
+
+    <form method="POST" class="delete-form">
+      <h3>Excluir Conta</h3>
+      <p>Digite sua senha para confirmar:</p>
+      <input type="password" name="senha" placeholder="Senha" required>
+      <button type="submit" class="delete-btn">Excluir Conta</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Contato{% endblock %}
+{% block content %}
+<a href="{{ url_for('home') if logado else url_for('index') }}" class="back-link">← Voltar</a>
+
+<div class="card">
+  <h1>Entre em Contato</h1>
+  <p>Tem dúvidas ou sugestões? Fale conosco!</p>
+  <form method="post" action="{{ url_for('contato') }}">
+    <label for="nome">Nome</label>
+    <input type="text" name="nome" required>
+
+    <label for="email">E-mail</label>
+    <input type="email" name="email" required>
+
+    <label for="mensagem">Mensagem</label>
+    <textarea name="mensagem" rows="4" required></textarea>
+
+    <button type="submit">Enviar</button>
+  </form>
+</div>
+{% endblock %}

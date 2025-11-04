@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}FAQ{% endblock %}
+{% block content %}
+<a href="{{ url_for('home') if logado else url_for('index') }}" class="back-link">← Voltar</a>
+
+<div class="card">
+  <h1>Perguntas Frequentes</h1>
+  <ul>
+    <li><strong>Como escanear um QR Code?</strong><br>Na página inicial, clique em “Escanear QR Code” e permita o uso da câmera.</li>
+    <li><strong>O que ganho ao escanear?</strong><br>Você desbloqueia cartões postais digitais exclusivos de cada atração turística.</li>
+    <li><strong>Posso compartilhar meus cartões?</strong><br>Sim! Você pode salvar e compartilhar suas memórias com amigos.</li>
+  </ul>
+</div>
+{% endblock %}
