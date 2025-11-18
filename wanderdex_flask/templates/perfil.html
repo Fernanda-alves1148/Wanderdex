@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block title %}Meu Perfil - Wanderdex{% endblock %}
 
-{% block extra_css %}
+{% block head_extra %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/globals.css') }}" />
 <link rel="stylesheet" href="{{ url_for('static', filename='css/pagina_base.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}" />
 <link rel="stylesheet" href="{{ url_for('static', filename='css/perfil.css') }}" />
 {% endblock %}
 
@@ -60,3 +61,4 @@
   </div>
 </main>
 {% endblock %}
+
