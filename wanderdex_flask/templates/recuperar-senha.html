@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Recuperar Senha - Wanderdex{% endblock %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/globals.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pagina_base.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}" />
+
+{% endblock %}
+
+{% block content %}
+<main>
+  <div class="auth-container">
+    <h2>Recuperar Senha</h2>
+
+    <form action="{{ url_for('recuperar_senha') }}" method="post">
+      <p class="auth-description">
+        Digite seu e-mail e enviaremos um link para você redefinir sua senha.
+      </p>
+
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+
+      <button type="submit" class="auth-button">Enviar</button>
+    </form>
+
+    <div class="form-links">
+      <p>
+        Lembrou da senha?
+        <a href="{{ url_for('login_clean') }}" class="form-link-primary">Voltar ao Login.</a>
+      </p>
+    </div>
+  </div>
+</main>
+{% endblock %}

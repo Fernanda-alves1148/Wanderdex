@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Descubra Uma Nova Aventura{% endblock %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/globals.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pagina_base.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/Index.css') }}" />
+
+{% endblock %}
+
+{% block content %}
+<div class="desktop">
+    <main>
+        <section class="hero-section" aria-labelledby="hero-heading">
+            <div class="text-content">
+                <h2 id="hero-heading">Descubra Uma Nova Aventura!!</h2>
+                <p>Gamificação que transforma a sua viagem em uma exploração repleta de recompensas!</p>
+                <div class="cta-buttons">
+                    <a href="{{ url_for('explorar_clean') }}" class="cta-button-primary" role="button" aria-label="Explorar destinos">
+                        <span class="button-text">Explorar</span>
+                    </a>
+                    <button type="button" class="cta-button-secondary" aria-label="Scan QR Code para começar">
+                        <span class="button-text-secondary">Scan QR Code</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="destinos-populares" class="gallery-section" aria-labelledby="gallery-heading">
+            <h2 id="gallery-heading" class="visually-hidden"></h2>
+            <div class="gallery-grid">
+                {% for cidade in cidades %}
+                <a href="{{ url_for('cidade_clean', cidade_id=cidade.id) }}" class="gallery-item" aria-label="{{ cidade.nome }}"></a>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <aside class="sidebar-menu" role="complementary" aria-label="Menu lateral">
+        <nav aria-label="Navegação secundária">
+            <a href="{{ url_for('destinos_populares_clean') }}" class="sidebar-link"><span class="sidebar-link-text">Destinos Populares</span></a>
+            <a href="{{ url_for('cartao_personalizado_clean') }}" class="sidebar-link"><span class="sidebar-link-text">Cartão Personalizado</span></a>
+            <a href="{{ url_for('faq_clean') }}" class="sidebar-link"><span class="sidebar-link-text">F.A.Q</span></a>
+            <a href="{{ url_for('contato_clean') }}" class="sidebar-link"><span class="sidebar-link-text">Contate-nos</span></a>
+        </nav>
+    </aside>
+</div>
+{% endblock %}
