@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Wanderdex - {% block title %}{% endblock %}</title>
+
+    <!-- CSS global -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/globals.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pagina_base.css') }}">
+
+    {% block head_extra %}
+    {% endblock %}
+</head>
+<body>
+
+    <!-- ---------- HEADER / NAV ---------- -->
+    <header class="header">
+        <div class="logo-container">
+            <a href="{{ url_for('root_index') }}"  class="brand-logo-text">Wanderdex>
+            </a>
+        </div>
+
+        <nav class="menu">
+            <a href="{{ url_for('explorar_clean') }}">Explorar</a>
+            <a href="{{ url_for('galeria_clean') }}">Galeria</a>
+            <a href="{{ url_for('perfil_clean') }}">Perfil</a>
+            <a href="{{ url_for('login_clean') }}">Login</a>
+        </nav>
+    </header>
+
+    <!-- ---------- MAIN CONTENT ---------- -->
+    <main class="main-content">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- ---------- FOOTER ---------- -->
+    <footer class="footer">
+        <p>© 2025 Wanderdex — Todos os direitos reservados.</p>
+    </footer>
+
+    {% block scripts %}
+    {% endblock %}
+
+</body>
+</html>

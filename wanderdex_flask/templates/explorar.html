@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Wanderdex - Explorar Destinos{% endblock %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/globals.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pagina_base.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/explorar.css') }}" />
+
+{% endblock %}
+
+{% block content %}
+<main>
+    <section class="explore-filters">
+        <h1>Explore Nossos Destinos</h1>
+        <form method="get" action="{{ url_for('explorar_clean') }}" class="search-bar">
+            <input type="search" name="q" placeholder="Para onde você quer ir?" value="{{ request.args.get('q', '') }}">
+            <button type="submit">Buscar</button>
+        </form>
+    </section>
+
+    <section class="explore-map-grid">
+        <h2>Resultados</h2>
+        {% if resultados %}
+            <div class="results-grid">
+                {% for destino in resultados %}
+                <a href="{{ url_for('cidade_clean', cidade_id=destino.id) }}" class="result-card">
+                    <h3>{{ destino.nome }}</h3>
+                </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="map-placeholder">
+                <p>Nenhum destino encontrado.</p>
+            </div>
+        {% endif %}
+    </section>
+</main>
+{% endblock %}
+

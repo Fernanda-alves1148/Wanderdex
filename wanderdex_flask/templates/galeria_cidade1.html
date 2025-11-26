@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta
+    name="description"
+    content="Explore sua galeria de cartões postais por atração - Wanderdex"
+  />
+  <title>Galeria de Atrações - Wanderdex</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/globals.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/pagina_base.css') }}" />
+  
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/galeria.css') }}" />
+</head>
+
+<body>
+  <div class="desktop">
+    
+    <header class="navbar" role="banner">
+      <a href="Index.html" class="brand-logo">Wanderdex</a>
+      <nav role="navigation" aria-label="Navegação principal">
+        <a href="explorar.html" class="nav-link">Explorar</a>
+        <a href="galeria.html" class="nav-link">Galeria</a>
+        <a href="perfil.html" class="nav-link">Perfil</a>
+        <a href="login.html" class="nav-link">Login</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero-section-galeria" aria-labelledby="page-title">
+        <h2 id="page-title" class="hero-title">Cidade 1: Atrações</h2>
+        <a href="#scan" class="cta-button-secondary" aria-label="Escanear código QR">
+          <span>Scan QR Code</span>
+        </a>
+        <div class="featured-image" role="img" aria-label="Imagem destacada da cidade"></div>
+      </section>
+
+      <section class="gallery-section" aria-label="Galeria de atrações">
+        <div class="gallery-grid">
+          <a href="cidade.html" class="card-item">
+            <figure class="card-image" role="img" aria-label="Imagem da Atração 1"></figure>
+            <h3 class="card-title">Atração 1</h3>
+          </a>
+
+          <a href="cidade.html" class="card-item">
+            <figure class="card-image" role="img" aria-label="Imagem da Atração 2"></figure>
+            <h3 class="card-title">Atração 2</h3>
+          </a>
+
+          <a href="cidade.html" class="card-item">
+            <figure class="card-image" role="img" aria-label="Imagem da Atração 3"></figure>
+            <h3 class="card-title">Atração 3</h3>
+          </a>
+          
+          <a href="cidade.html" class="card-item">
+            <figure class="card-image" role="img" aria-label="Imagem da Atração 4"></figure>
+            <h3 class="card-title">Atração 4</h3>
+          </a>
+
+          <a href="cidade.html" class="card-item">
+            <figure class="card-image" role="img" aria-label="Imagem da Atração 5"></figure>
+            <h3 class="card-title">Atração 5</h3>
+          </a>
+          
+          </div>
+      </section>
+
+      <aside class="sidebar-menu" role="complementary" aria-label="Menu lateral">
+        <nav aria-label="Navegação secundária">
+          <a href="destinos_populares.html" class="sidebar-link">
+            <span class="sidebar-link-text">Destinos Populares</span>
+          </a>
+          <a href="cartao_personalizado.html" class="sidebar-link">
+            <span class="sidebar-link-text">Cartão Personalizado</span>
+          </a>
+          <a href="faq.html" class="sidebar-link">
+            <span class="sidebar-link-text">F.A.Q</span>
+          </a>
+          <a href="contato.html" class="sidebar-link">
+            <span class="sidebar-link-text">Contate-nos</span>
+          </a>
+        </nav>
+      </aside>
+
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2025 Wanderdex. Todos os direitos reservados.</p>
+    </footer>
+  </div>
+</body>
+</html>
