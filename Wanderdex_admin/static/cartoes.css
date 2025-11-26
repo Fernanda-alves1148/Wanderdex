@@ -1,0 +1,20 @@
+.postcard-card {
+    display: flex;
+    gap: 15px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px #0002;
+    margin-bottom: 15px;
+}
+
+.postcard-card img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.postcard-info {
+    flex: 1;
+}

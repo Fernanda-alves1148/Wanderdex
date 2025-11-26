@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='atracoes.css') }}">
+{% endblock %}
+
+{% block content %}
+<h1>{{ "Editar Atração" if attraction else "Nova Atração" }}</h1>
+
+<form method="POST">
+    <label>Nome:</label>
+    <input type="text" name="name" required value="{{ attraction.name if attraction else '' }}">
+
+    <label>Local:</label>
+    <input type="text" name="location" required value="{{ attraction.location if attraction else '' }}">
+
+    <label>Horário de Funcionamento:</label>
+    <input type="text" name="hours" required value="{{ attraction.hours if attraction else '' }}">
+
+    <label>URL da Imagem:</label>
+    <input type="text" name="image" required value="{{ attraction.image if attraction else '' }}">
+
+    {% if attraction %}
+    <p><strong>Cartões vinculados:</strong> {{ attraction.postcards|length }}</p>
+    {% endif %}
+
+    <button class="btn" type="submit">Salvar</button>
+</form>
+
+{% endblock %}

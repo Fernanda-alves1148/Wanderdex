@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='cartoes.css') }}">
+{% endblock %}
+
+{% block content %}
+<h1>{{ "Editar Cartão" if postcard else "Novo Cartão" }}</h1>
+
+<form method="POST">
+
+    <label>Nome:</label>
+    <input type="text" name="name" required value="{{ postcard.name if postcard else '' }}">
+
+    <label>Descrição:</label>
+    <textarea name="description" required>{{ postcard.description if postcard else '' }}</textarea>
+
+    <label>URL da Imagem:</label>
+    <input type="text" name="image" required value="{{ postcard.image if postcard else '' }}">
+
+    <label>Atração Relacionada:</label>
+    <select name="attraction" required>
+        <option value="">Selecione...</option>
+
+        {% for a in attractions %}
+        <option value="{{ a.id }}"
+            {% if postcard and postcard.attraction == a.id %} selected {% endif %}>
+            {{ a.name }}
+        </option>
+        {% endfor %}
+    </select>
+
+    <button class="btn" type="submit">Salvar</button>
+</form>
+
+{% endblock %}

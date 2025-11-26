@@ -1,0 +1,43 @@
+.header {
+    background: var(--green-dark);
+    padding: 15px;
+}
+
+.navbar {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.navbar a {
+    color: white;
+    font-size: 17px;
+}
+
+.navbar a:hover {
+    color: var(--orange);
+}
+
+.main-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--orange-dark);
+    font-size: 18px;
+}
+
+.index-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}

@@ -1,0 +1,23 @@
+.form-box {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px #0002;
+    max-width: 700px;
+    margin: auto;
+}
+
+.submit-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background: var(--green);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 18px;
+}
+
+.submit-btn:hover {
+    background: var(--green-dark);
+}

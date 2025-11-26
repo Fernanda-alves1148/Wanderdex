@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='atracoes.css') }}">
+{% endblock %}
+
+{% block content %}
+<h1>Atrações</h1>
+
+<a class="btn" href="{{ url_for('nova_atracao') }}">+ Nova Atração</a>
+
+<div class="list-container">
+
+{% if attractions %}
+    {% for a in attractions %}
+    <div class="card">
+        <img src="{{ a.image }}" alt="{{ a.name }}">
+        <h3>{{ a.name }}</h3>
+        <p><strong>Local:</strong> {{ a.location }}</p>
+        <p><strong>Funcionamento:</strong> {{ a.hours }}</p>
+        <p><strong>Cartões:</strong> {{ a.postcards|length }}</p>
+
+        <a class="btn" href="{{ url_for('editar_atracao', attr_id=a.id) }}">Editar</a>
+        <a class="btn-danger" href="{{ url_for('excluir_atracao', attr_id=a.id) }}">Excluir</a>
+    </div>
+    {% endfor %}
+{% else %}
+    <p>Nenhuma atração cadastrada.</p>
+{% endif %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='cartoes.css') }}">
+{% endblock %}
+
+{% block content %}
+<h1>Cartões Postais</h1>
+
+<a class="btn" href="{{ url_for('novo_cartao') }}">+ Novo Cartão</a>
+
+<div class="list-container">
+
+{% if postcards %}
+    {% for c in postcards %}
+    <div class="card">
+        <img src="{{ c.image }}" alt="{{ c.name }}">
+
+        <h3>{{ c.name }}</h3>
+        <p>{{ c.description }}</p>
+
+        <p><strong>Atração:</strong>
+            {{ (attractions | selectattr('id', 'equalto', c.attraction) | list)[0].name }}
+        </p>
+
+        <a class="btn" href="{{ url_for('editar_cartao', card_id=c.id) }}">Editar</a>
+        <a class="btn-danger" href="{{ url_for('excluir_cartao', card_id=c.id) }}">Excluir</a>
+    </div>
+    {% endfor %}
+{% else %}
+    <p>Nenhum cartão cadastrado.</p>
+{% endif %}
+
+</div>
+{% endblock %}

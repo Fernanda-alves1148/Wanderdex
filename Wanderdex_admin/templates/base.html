@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title if title else "Wanderdex Admin" }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='globals.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="{{ url_for('index') }}">Início</a>
+        <a href="{{ url_for('perfil') }}">Perfil</a>
+        <a href="{{ url_for('listar_atracoes') }}">Atrações</a>
+        <a href="{{ url_for('listar_cartoes') }}">Cartões</a>
+    </nav>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+</body>
+</html>

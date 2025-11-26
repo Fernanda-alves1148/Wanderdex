@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='perfil.css') }}">
+{% endblock %}
+
+{% block content %}
+<h1>Perfil do Administrador</h1>
+
+<div class="profile-box">
+    <p><strong>Nome:</strong> Administrador</p>
+    <p><strong>Email:</strong> admin@wanderdex.com</p>
+    <p><strong>Cargo:</strong> Gerente do Sistema</p>
+</div>
+{% endblock %}

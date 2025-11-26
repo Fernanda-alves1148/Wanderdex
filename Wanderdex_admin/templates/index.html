@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+{% endblock %}
+
+{% block content %}
+<h1>Área Administrativa Wanderdex</h1>
+<p>Gerencie atrações e cartões postais do sistema.</p>
+{% endblock %}
