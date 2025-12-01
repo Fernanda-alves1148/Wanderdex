@@ -1,0 +1,37 @@
+{% extends "admin/base_admin.html" %}
+
+{% block content %}
+<div class="header-action">
+    <h1>Gerenciar Atrações</h1>
+    <a href="{{ url_for('admin_nova_atracao') }}" class="btn-primary">+ Nova Atração</a>
+</div>
+
+<table class="admin-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Cidade</th> <th>Local</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for atracao in attractions %}
+        <tr>
+            <td>{{ atracao.id }}</td>
+            <td>{{ atracao.nome }}</td>
+            <td>{{ atracao.cidade.nome }}</td>
+            <td>{{ atracao.local }}</td>
+            <td>
+                <a href="{{ url_for('admin_editar_atracao', id=atracao.id) }}" class="btn-small">Editar</a>
+                <a href="{{ url_for('admin_excluir_atracao', id=atracao.id) }}" class="btn-small btn-danger" onclick="return confirm('Tem certeza?');">Excluir</a>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5">Nenhuma atração cadastrada.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

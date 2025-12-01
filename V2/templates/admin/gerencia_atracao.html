@@ -1,0 +1,45 @@
+{% extends "admin/base_admin.html" %}
+
+{% block content %}
+<h1>{{ "Editar Atração" if attraction else "Nova Atração" }}</h1>
+
+<form method="POST" class="admin-form">
+    
+    <div class="form-group">
+        <label>Cidade Vinculada:</label>
+        <select name="cidade_id" required>
+            <option value="">Selecione uma cidade...</option>
+            {% for cidade in cidades %}
+            <option value="{{ cidade.id }}" 
+                {% if attraction and attraction.cidade_id == cidade.id %}selected{% endif %}>
+                {{ cidade.nome }}
+            </option>
+            {% endfor %}
+        </select>
+        <small style="color: gray;">Cadastre a cidade primeiro se a lista estiver vazia.</small>
+    </div>
+
+    <div class="form-group">
+        <label>Nome da Atração:</label>
+        <input type="text" name="name" required value="{{ attraction.nome if attraction else '' }}" placeholder="Ex: Cristo Redentor">
+    </div>
+
+    <div class="form-group">
+        <label>Localização:</label>
+        <input type="text" name="location" value="{{ attraction.local if attraction else '' }}" placeholder="Ex: Topo do Corcovado">
+    </div>
+
+    <div class="form-group">
+        <label>Horário de Funcionamento:</label>
+        <input type="text" name="hours" value="{{ attraction.horario if attraction else '' }}" placeholder="Ex: 08h - 18h">
+    </div>
+
+    <div class="form-group">
+        <label>URL da Imagem:</label>
+        <input type="text" name="image" value="{{ attraction.imagem_url if attraction else '' }}">
+    </div>
+
+    <button type="submit" class="btn-primary">Salvar Atração</button>
+    <a href="{{ url_for('admin_atracoes') }}" class="btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

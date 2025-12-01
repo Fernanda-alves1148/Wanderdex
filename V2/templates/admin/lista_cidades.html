@@ -1,0 +1,36 @@
+{% extends "admin/base_admin.html" %}
+
+{% block content %}
+<div class="header-action">
+    <h1>Gerenciar Cidades</h1>
+    <a href="{{ url_for('admin_nova_cidade') }}" class="btn-primary">+ Nova Cidade</a>
+</div>
+
+<table class="admin-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Subtítulo</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cidade in cidades %}
+        <tr>
+            <td>{{ cidade.id }}</td>
+            <td>{{ cidade.nome }}</td>
+            <td>{{ cidade.subtitulo }}</td>
+            <td>
+                <a href="#" class="btn-small">Editar</a>
+                <a href="#" class="btn-small btn-danger">Excluir</a>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="4">Nenhuma cidade cadastrada.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "admin/base_admin.html" %}
+
+{% block content %}
+<h1>Painel de Controle</h1>
+<p>Bem-vindo ao sistema de gerenciamento do Wanderdex.</p>
+
+<div class="dashboard-cards">
+    <div class="card-stat">
+        <h3>Cidades</h3>
+        <p>Gerencie os destinos turísticos.</p>
+        <a href="{{ url_for('admin_cidades') }}" class="btn-admin">Ver Cidades</a>
+    </div>
+
+    <div class="card-stat">
+        <h3>Atrações</h3>
+        <p>Pontos turísticos vinculados às cidades.</p>
+        <a href="{{ url_for('admin_atracoes') }}" class="btn-admin">Ver Atrações</a>
+    </div>
+</div>
+{% endblock %}
