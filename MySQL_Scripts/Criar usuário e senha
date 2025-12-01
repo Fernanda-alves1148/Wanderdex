@@ -1,0 +1,7 @@
+CREATE USER 'wanderdex_user'@'localhost' IDENTIFIED BY 'wanderdex';
+
+CREATE DATABASE IF NOT EXISTS wanderdex_db;
+
+GRANT ALL PRIVILEGES ON wanderdex_db.* TO 'wanderdex_user'@'localhost';
+
+FLUSH PRIVILEGES;
