@@ -1,0 +1,99 @@
+.auth-container {
+  max-width: 500px;
+  margin: 0 auto 2rem auto;
+  padding: 2.5rem;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border: 2px solid #fcebe3;
+}
+
+.auth-container h2 {
+  font-family: "DynaPuff", Helvetica;
+  font-size: clamp(28px, 4vw, 40px);
+  text-align: left;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: "Dhyana", Helvetica;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"] {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  font-family: "Dhyana", Helvetica;
+  background-color: #fcfcfc;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #4a6c4a;
+  box-shadow: 0 0 0 2px rgba(74,108,74,0.2);
+}
+
+.auth-button {
+  width: auto;
+  padding: 0.8rem 2.5rem;
+  border-radius: 10px;
+  border: none;
+  background-color: #d98c63;
+  color: #fff;
+  font-family: "DynaPuff", Helvetica;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.auth-button:hover {
+  background-color: #c77a54;
+}
+
+.form-links {
+  margin-top: 2rem;
+  text-align: left;
+  font-size: 0.95rem;
+  font-family: "Dhyana", Helvetica;
+  line-height: 1.5;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 1.5rem;
+}
+
+.form-links p {
+  margin-top: 0.5rem;
+}
+
+.form-links .form-link-secondary {
+  color: #d98c63;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.form-links .form-link-primary {
+  color: #4a6c4a;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.auth-description {
+  font-family: "Dhyana", Helvetica;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
