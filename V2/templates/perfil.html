@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Meu Perfil - Wanderdex{% endblock %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/globals.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pagina_base.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/perfil.css') }}" />
+{% endblock %}
+
+{% block content %}
+<main>
+  <div class="auth-container auth-container--profile">
+    <h2>Meu Perfil</h2>
+
+    <div class="profile-grid">
+      
+      <!-- Avatar -->
+      <section class="profile-avatar-section">
+        <figure class="profile-avatar" role="img" aria-label="Avatar atual do usuário"></figure>
+        <a href="#" class="form-link-primary">Alterar Avatar</a>
+      </section>
+
+      <!-- Dados / Estatísticas -->
+      <section class="profile-details-section">
+
+        <h3>Dados da Conta</h3>
+        <form action="{{ url_for('perfil_clean') }}" method="post">
+          <div class="form-group">
+            <label for="username">Usuário</label>
+            <input type="text" id="username" name="username" value="{{ user.username }}" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" value="{{ user.email }}" required />
+          </div>
+
+          <button type="submit" class="auth-button">Salvar Alterações</button>
+        </form>
+
+        <!-- Estatísticas -->
+        <h3 class="section-title">Estatísticas Wanderdex</h3>
+        <div class="profile-stats">
+          <div class="stat-item">
+            <span>Cartões Coletados</span>
+            <strong>{{ stats.cartoes }} / {{ stats.total_cartoes }}</strong>
+          </div>
+          <div class="stat-item">
+            <span>Cidades Visitadas</span>
+            <strong>{{ stats.cidades }} / {{ stats.total_cidades }}</strong>
+          </div>
+        </div>
+        <div class="profile-actions">
+        <a href="{{ url_for('logout') }}" class="btn-logout">Sair da Conta</a>
+        </div>
+
+        <!-- Segurança -->
+        <h3 class="section-title">Segurança</h3>
+        <a href="{{ url_for('recuperar_senha') }}" class="form-link-secondary">Alterar Senha</a>
+
+      </section>
+    </div>
+  </div>
+</main>
+{% endblock %}

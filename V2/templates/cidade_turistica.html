@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Wanderdex - {{ cidade.nome }}{% endblock %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/globals.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pagina_base.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cidade.css') }}" />
+
+{% endblock %}
+
+{% block content %}
+<main>
+    <section class="hero-section-cidade" aria-labelledby="city-title">
+        <h2 id="city-title" class="hero-title">{{ cidade.nome }}</h2>
+        <figure class="hero-image" role="img" aria-label="Imagem da cidade turística"></figure>
+        <p class="hero-subtitle">{{ cidade.subtitulo }}</p>
+
+        <div class="cta-buttons">
+            <a href="{{ url_for('explorar_clean') }}" class="cta-button-primary" aria-label="Explorar destinos">
+                <span class="button-text">Explorar</span>
+            </a>
+            <a href="#qr-code" class="cta-button-secondary" aria-label="Escanear código QR">
+                <span class="button-text-secondary">Scan QR Code</span>
+            </a>
+        </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="description-heading">
+        <h3 id="description-heading">Descrição da Cidade</h3>
+        <p class="city-description-text">{{ cidade.descricao }}</p>
+    </section>
+
+    <section class="attractions-section" aria-labelledby="attractions-heading">
+        <h2 id="attractions-heading">Atrações Turísticas</h2>
+        <div class="attractions-grid">
+            {% for atracao in cidade.atracoes %}
+            <article class="attraction-item">
+                <a href="{{ url_for('atracao_detalhe', atracao_id=atracao.id) }}" aria-label="Ver detalhes da {{ atracao.nome }}">
+                    <figure class="attraction-image" role="img" aria-label="Imagem da {{ atracao.nome }}"></figure>
+                </a>
+                <h3 class="attraction-title">{{ atracao.nome }}</h3>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+{% endblock %}
