@@ -1,0 +1,56 @@
+CREATE DATABASE IF NOT EXISTS wanderdex_db;
+USE wanderdex_db;
+
+CREATE TABLE IF NOT EXISTS cidades (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    subtitulo VARCHAR(150),
+    descricao TEXT,
+    imagem_url VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS atracoes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cidade_id INT NOT NULL,
+    nome VARCHAR(100) NOT NULL,
+    local VARCHAR(150),
+    horario VARCHAR(100),
+    imagem_url VARCHAR(255),
+    FOREIGN KEY (cidade_id) REFERENCES cidades(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS cartoes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    atracao_id INT NOT NULL,
+    nome VARCHAR(100) NOT NULL,
+    descricao TEXT,
+    imagem_url VARCHAR(255),
+    FOREIGN KEY (atracao_id) REFERENCES atracoes(id) ON DELETE CASCADE
+);
+
+INSERT INTO cidades (nome, subtitulo, descricao) VALUES 
+('Teste de Conexão', 'Funcionou!', '');
+
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    senha_hash VARCHAR(255) NOT NULL, -- Aqui guardaremos a senha criptografada
+    is_admin BOOLEAN DEFAULT FALSE -- Para saber se pode acessar o /admin
+);
+
+-- (Opcional) Criar um admin padrão com senha 'admin'
+-- A hash abaixo é referente à senha 'admin'
+INSERT INTO usuarios (username, email, senha_hash, is_admin) 
+VALUES ('admin', 'admin@wanderdex.com', 'pbkdf2:sha256:600000$SomeHashString...', TRUE);
+
+CREATE TABLE IF NOT EXISTS usuario_cartoes (
+    usuario_id INT NOT NULL,
+    cartao_id INT NOT NULL,
+    -- A Chave Primária é a combinação dos dois IDs (evita duplicatas)
+    PRIMARY KEY (usuario_id, cartao_id),
+    -- Define que usuario_id aponta para a tabela usuarios
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE,
+    -- Define que cartao_id aponta para a tabela cartoes
+    FOREIGN KEY (cartao_id) REFERENCES cartoes(id) ON DELETE CASCADE
+);
